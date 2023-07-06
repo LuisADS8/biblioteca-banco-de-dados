@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/tela_funcionario.css">
+    <title>Funcionário</title>
+</head>
+<body>
+    <header>
+        <img src="images/logo_bibliotech.jpg" alt="Logo da biblioteca">
+        <div class="usuarioLogado">
+            <img src="images/profile.png" alt="Imagem do usuário">
+            <button>Sair</button>
+        </div>
+    </header>
+    <main>
+        <section class="navegacao">
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroInstituicao')">Cadastrar Instituição</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroProfessor')">Cadastrar Professor</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroAluno')">Cadastrar Aluno</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroPessoa')">Cadastrar Pessoa</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoProfessor')">Empréstimo Professor</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoAluno')">Empréstimo Aluno</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoPessoa')">Empréstimo Pessoa</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroAutor')">Cadastrar Autor</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroLivro')">Cadastrar Livro</button>
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroEditora')">Cadastrar Editora</button>
+        </section>
+        <section class="telaRequerida">
+            <div id="telaCadastroInstituicao" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">
+                    <label for="nome">Nome da Instituição:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                    
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="tipo">Tipo da Instituição:</label>
+                    <select id="tipo" name="tipo">
+                      <option value="particular">Particular</option>
+                      <option value="publica">Pública</option>
+                    </select>
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaCadastroProfessor" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label for="matricula">Matrícula:</label>
+                    <input type="text" id="matricula" name="matricula" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="instituicao">Instituição:</label>
+                    <select id="instituicao" name="instituicao">
+                      <option value="instituicao1">A</option>
+                      <option value="instituicao2">B</option>
+                      <option value="instituicao3">C</option>
+                    </select>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                    
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaCadastroAluno" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label for="matricula">Matrícula:</label>
+                    <input type="text" id="matricula" name="matricula" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="instituicao">Instituição:</label>
+                    <select id="instituicao" name="instituicao">
+                      <option value="instituicao1">A</option>
+                      <option value="instituicao2">B</option>
+                      <option value="instituicao3">C</option>
+                    </select>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                    
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaCadastroPessoa" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                    
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaEmprestimoProfessor" class="tela telaPersonalizacao">
+
+            </div>
+            <div id="telaEmprestimoAluno" class="tela telaPersonalizacao">
+
+            </div>
+            <div id="telaEmprestimoPessoa" class="tela telaPersonalizacao">
+
+            </div>
+            <div id="telaCadastroAutor" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="nome">País de origem:</label>
+                    <input type="text" id="pais" name="pais" required>
+                    
+                    <label for="instagram">Usuário do Instagram:</label>
+                    <input type="text" id="instagram" name="instagram">
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaCadastroLivro" class="tela telaPersonalizacao">
+                <form action="a.php" method="POST">              
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+
+                    <label for="subtitulo">Subtítulo:</label>
+                    <input type="text" id="subtitulo" name="subtitulo">
+
+                    <label for="genero">Gênero:</label>
+                    <input type="text" id="genero" name="genero" required>
+                    
+                    <label for="autor">Autor:</label>
+                    <select id="autor" name="autor" required>
+                      <option value="autor1">Autor 1</option>
+                      <option value="autor2">Autor 2</option>
+                      <option value="autor3">Autor 3</option>
+                    </select>
+
+                    <label for="editora">Editora:</label>
+                    <select id="editora" name="editora" required>
+                      <option value="editora1">Editora 1</option>
+                      <option value="editora2">Editora 2</option>
+                      <option value="editora3">Editora 3</option>
+                    </select>
+
+                    <label for="isbn">Código ISBN:</label>
+                    <input type="text" id="isbn" name="isbn" required>
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
+            <div id="telaCadastroEditora" class="tela telaPersonalizacao">
+
+            </div>
+        </section>
+    </main>
+    <script>
+        function ativarBotao(botao) {
+            var botoes = document.getElementsByClassName('botao');
+            for (var i = 0; i < botoes.length; i++) {
+                botoes[i].classList.remove('ativo');
+            }
+            botao.classList.add('ativo');
+        }
+        function exibirTela(telaId) {
+            var telas = document.getElementsByClassName("tela");
+            for (var i = 0; i < telas.length; i++) {
+                telas[i].style.display = "none";
+            }
+            var tela = document.getElementById(telaId);
+            if (tela) {
+                tela.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

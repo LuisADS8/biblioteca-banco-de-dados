@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+:root {
+    --principal: #172E71;
+    --secundaria: #EB3037;
+    --tom-secundario-forte: #13191D;
+    --tom-secundario-fraco: #1E232D;
+    --verde: #63A194;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+}
+
+body {
+    max-width: 1000px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: var(--tom-secundario-forte);
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    height: 20%;
+}
+
+header > img {
+    width: 150px;
+}
+
+.usuarioLogado {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.usuarioLogado > img {
+    width: 60px;
+}
+
+.usuarioLogado > button {
+    width: 70px;
+    height: 35px;
+    cursor: pointer;
+    background-color: var(--principal);
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.usuarioLogado > button:hover {
+    background-color: #00134d;
+}
+
+main {
+    height: 80%;
+    color: white;
+    background-color: var(--tom-secundario-fraco);
+    display: flex;
+}
+
+.navegacao {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    background-color: white;
+    background-color: var(--secundaria);
+}
+
+.navegacao > button {
+    width: 100%;
+    align-self: center;
+    height: 50px;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    background-color: var(--secundaria);
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.navegacao > button:hover {
+    background-color: var(--tom-secundario-fraco);
+}
+
+.navegacao > button.ativo {
+    background-color: var(--tom-secundario-fraco);
+}
+
+.telaRequerida {
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tela {
+    display: none;
+}
+
+.telaPersonalizacao {
+    padding: 20px;
+    background-color: var(--principal);
+    height: 95%;
+    width: 95%;
+    border-radius: 20px;
+}
+
+.telaPersonalizacao > form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.telaPersonalizacao > form > input, select {
+    width: 60%;
+    height: 25px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
+
+.botaoConfirmar {
+    width: 30%;
+    height: 50px;
+    margin-top: 40px;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 1.1em;
+    color: white;
+    background-color: var(--secundaria);
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+.botaoConfirmar:hover {
+    background-color: #ad0006;
+}
