@@ -1,13 +1,13 @@
 <?php
     include_once './php/conexao.php';
 
-    $sql = "SELECT nome FROM usuario WHERE tipo_usuario LIKE 'Alunos' ";
+    $sql = "SELECT id_usuario, nome FROM usuario WHERE tipo_usuario LIKE 'Aluno' ";
     $result = $conn->query($sql);
     
     $alunos = array();
     if ($result->rowCount() > 0) {
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $alunos[] = $row["nome"];
+            $alunos[$row["id_usuario"]] = $row["nome"];
         }
     }
 ?>

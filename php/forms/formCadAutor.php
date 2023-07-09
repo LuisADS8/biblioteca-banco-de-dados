@@ -4,11 +4,9 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
         $nome = $_POST['nome'];
-        $email = $_POST['email'];  
         $pais = $_POST['pais'];
-        $instagram = $_POST['instagram'];
 
-        $sql = "INSERT INTO autor (nome, email, pais, instagram) VALUES ('$nome', '$email', '$pais', '$instagram')";
+        $sql = "INSERT INTO autor (nome, pais) VALUES ('$nome', '$pais')";
 
         $conn->query($sql);
     }   

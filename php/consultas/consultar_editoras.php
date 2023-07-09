@@ -1,13 +1,13 @@
 <?php
     include_once './php/conexao.php';
 
-    $sql = "SELECT id_livro, titulo FROM livro";
+    $sql = "SELECT id_editora, nome FROM editora";
     $result = $conn->query($sql);
     
-    $livros = array();
+    $editoras = array();
     if ($result->rowCount() > 0) {
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-            $livros[$row["id_livro"]] = $row["titulo"];
+            $editoras[$row["id_editora"]] = $row["nome"];
         }
     }
 ?>

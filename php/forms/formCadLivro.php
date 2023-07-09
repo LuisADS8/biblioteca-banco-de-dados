@@ -6,11 +6,12 @@
         $titulo = $_POST['titulo'];
         $subtitulo = $_POST['subtitulo'];  
         $genero = $_POST['genero'];
-        $autor = $_POST['autor'];
-        $editora = $_POST['editora'];
+        $quantidade = $_POST['quantidade'];
+        $autorId = $_POST['autor'];
+        $editoraId = $_POST['editora'];
         $isbn = $_POST['isbn'];
 
-        $sql = "INSERT INTO livro (titulo, subtitulo, genero, autor, editora, isbn) VALUES ('$titulo', '$subtitulo', '$genero', '$autor', '$editora', '$isbn')";
+        $sql = "INSERT INTO livro (titulo, subtitulo, genero, quantidade, id_autor, id_editora, isbn) VALUES ('$titulo', '$subtitulo', '$genero', '$quantidade', '$autorId', '$editoraId', '$isbn')";
 
         $conn->query($sql);
     }   
