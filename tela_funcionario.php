@@ -46,17 +46,29 @@
             <!-- BOTÃO PARA TELA DE CADASTRAR LIVRO -->
             <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroLivro')">Cadastrar Livro</button>
 
-            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA O PROFESSOR-->
+            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA O PROFESSOR -->
             <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoProfessor')">Empréstimo Professor</button>
 
-            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA O ALUNO-->
+            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA O ALUNO -->
             <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoAluno')">Empréstimo Aluno</button>
 
-            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA A PESSOA-->
+            <!-- BOTÃO PARA TELA DE REALIZAR EMPRÉSTIMO PARA A PESSOA -->
             <button class="botao" onclick="ativarBotao(this), exibirTela('telaEmprestimoPessoa')">Empréstimo Pessoa</button>
-        </section>
-        <section class="telaRequerida">
 
+            <!-- BOTÃO PARA TELA DE REALIZAR RESERVA PARA O PROFESSOR -->
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaReservaProfessor')">Reserva Professor</button>
+
+            <!-- BOTÃO PARA TELA DE REALIZAR RESERVA PARA O ALUNO -->
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaReservaAluno')">Reserva Aluno</button>
+
+            <!-- BOTÃO PARA TELA DE REALIZAR RESERVA PARA A PESSOA -->
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaReservaPessoa')">Reserva Pessoa</button>
+
+            <!-- BOTÃO PARA CRIAR UM EVENTO -->
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCriarEvento')">Criar Evento</button>
+        </section>
+
+        <section class="telaRequerida">
         <!-- TELA DE CADASTRAR INSTITUIÇÃO -->
             <div id="telaCadastroInstituicao" class="tela telaPersonalizacao">
                 <form id="form-instituicao" method="POST">
@@ -254,7 +266,7 @@
             <div id="telaEmprestimoProfessor" class="tela telaPersonalizacao">
                 <form id="form-emprestimo-professor" method="POST">
                     <label for="professores">Professores:</label>
-                        <select id="professorEmprestimoProfessor" name="professores">
+                        <select id="professoresEmprestimoProfessor" name="professores">
                             <?php
                                 foreach ($professores as $id_usuario => $professor) {
                                     echo "<option value=\"$id_usuario\">$professor</option>";
@@ -264,19 +276,22 @@
                     <label for="livros">Livros:</label>
                         <select id="livrosEmprestimoProfessor" name="livros">
                             <?php
-                                foreach ($livros as $id_livro => $livro) {
+                                foreach ($livrosTitulo as $id_livro => $livro) {
                                     echo "<option value=\"$id_livro\">$livro</option>";
                                 }
                             ?>
                         </select>
 
-                    <button class="botaoConfirmar" type="submit">Realizar empréstimo</button>
+                    <label for="quantidadeDias">Quantidade de dias com o livro:</label>
+                    <input type="number" id="quantidadeDiasProfessor" name="quantidadeDias">
+
+                    <button class="botaoConfirmar" type="submit">Realizar Empréstimo</button>
                 </form>
             </div>
 
             <!-- TELA DE REALIZAR EMPRÉSTIMO PARA O ALUNO -->
             <div id="telaEmprestimoAluno" class="tela telaPersonalizacao">
-                <form id="form-emprestimo-professor" method="POST">
+                <form id="form-emprestimo-aluno" method="POST">
                     <label for="alunos">Alunos:</label>
                         <select id="alunosEmprestimoAluno" name="alunos">
                             <?php
@@ -288,19 +303,22 @@
                     <label for="livros">Livros:</label>
                         <select id="livrosEmprestimoAluno" name="livros">
                             <?php
-                                foreach ($livros as $id_livro => $livro) {
+                                foreach ($livrosTitulo as $id_livro => $livro) {
                                     echo "<option value=\"$id_livro\">$livro</option>";
                                 }
                             ?>
                         </select>
 
-                    <button class="botaoConfirmar" type="submit">Realizar empréstimo</button>
+                    <label for="quantidadeDias">Quantidade de dias com o livro:</label>
+                    <input type="number" id="quantidadeDiasAluno" name="quantidadeDias">
+
+                    <button class="botaoConfirmar" type="submit">Realizar Empréstimo</button>
                 </form>
             </div>
 
             <!-- TELA DE REALIZAR EMPRÉSTIMO PARA O PESSOA -->
             <div id="telaEmprestimoPessoa" class="tela telaPersonalizacao">
-                <form id="form-emprestimo-professor" method="POST">
+                <form id="form-emprestimo-pessoa" method="POST">
                     <label for="pessoas">Pessoas:</label>
                         <select id="pessoasEmprestimoPessoa" name="pessoas">
                             <?php
@@ -312,13 +330,116 @@
                     <label for="livros">Livros:</label>
                         <select id="livrosEmprestimoPessoa" name="livros">
                             <?php
-                                foreach ($livros as $id_livro => $livro) {
+                                foreach ($livrosTitulo as $id_livro => $livro) {
                                     echo "<option value=\"$id_livro\">$livro</option>";
                                 }
                             ?>
                         </select>
 
-                    <button class="botaoConfirmar" type="submit">Realizar empréstimo</button>
+                    <label for="quantidadeDias">Quantidade de dias com o livro:</label>
+                    <input type="number" id="quantidadeDiasPessoa" name="quantidadeDias">
+
+                    <button class="botaoConfirmar" type="submit">Realizar Empréstimo</button>
+                </form>
+            </div>
+
+            <!-- TELA DE REALIZAR RESERVA PARA O PROFESSOR -->
+            <div id="telaReservaProfessor" class="tela telaPersonalizacao">
+                <form id="form-reserva-professor" method="POST">
+                    <label for="alunos">Professores:</label>
+                        <select id="alunosReservaProfessor" name="professores">
+                            <?php
+                                foreach ($professores as $id_usuario => $professor) {
+                                    echo "<option value=\"$id_usuario\">$professor</option>";
+                                }
+                            ?>
+                        </select>
+                    <label for="livros">Livros:</label>
+                        <select id="livrosReservaProfessor" name="livros">
+                            <?php
+                                foreach ($livrosTitulo as $id_livro => $livro) {
+                                    echo "<option value=\"$id_livro\">$livro</option>";
+                                }
+                            ?>
+                        </select>
+
+                    <label for="data">Data da reserva:</label>
+                    <input type="date" id="dataReserva" name="data" required>
+
+                    <button class="botaoConfirmar" type="submit">Realizar Reserva</button>
+                </form>
+            </div>
+
+            <!-- TELA DE REALIZAR RESERVA PARA O ALUNO -->
+            <div id="telaReservaAluno" class="tela telaPersonalizacao">
+                <form id="form-reserva-aluno" method="POST">
+                    <label for="alunos">Alunos:</label>
+                        <select id="alunosReservaAluno" name="alunos">
+                            <?php
+                                foreach ($alunos as $id_usuario => $aluno) {
+                                    echo "<option value=\"$id_usuario\">$aluno</option>";
+                                }
+                            ?>
+                        </select>
+                    <label for="livros">Livros:</label>
+                        <select id="livrosReservaAluno" name="livros">
+                            <?php
+                                foreach ($livrosTitulo as $id_livro => $livro) {
+                                    echo "<option value=\"$id_livro\">$livro</option>";
+                                }
+                            ?>
+                        </select>
+
+                        <label for="data">Data da reserva:</label>
+                    <input type="date" id="dataReserva" name="data" required>
+
+                    <button class="botaoConfirmar" type="submit">Realizar Reserva</button>
+                </form>
+            </div>
+
+            <!-- TELA DE REALIZAR RESERVA PARA A PESSOA -->
+            <div id="telaReservaPessoa" class="tela telaPersonalizacao">
+                <form id="form-reserva-pessoa" method="POST">
+                    <label for="alunos">Pessoas:</label>
+                        <select id="alunosReservaPessoa" name="pessoas">
+                            <?php
+                                foreach ($pessoas as $id_usuario => $pessoa) {
+                                    echo "<option value=\"$id_usuario\">$pessoa</option>";
+                                }
+                            ?>
+                        </select>
+                    <label for="livros">Livros:</label>
+                        <select id="livrosReservaPessoa" name="livros">
+                            <?php
+                                foreach ($livrosTitulo as $id_livro => $livro) {
+                                    echo "<option value=\"$id_livro\">$livro</option>";
+                                }
+                            ?>
+                        </select>
+
+                        <label for="data">Data da reserva:</label>
+                    <input type="date" id="dataReserva" name="data" required>
+
+                    <button class="botaoConfirmar" type="submit">Realizar Reserva</button>
+                </form>
+            </div>
+
+            <!-- TELA DE CRIAR EVENTO -->
+            <div id="telaCriarEvento" class="tela telaPersonalizacao">
+                <form id="form-criar-evento" method="POST">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="tituloEvento" name="titulo" required>
+
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricaoEvento" name="descricao" rows="4" cols="20" required> Evento...</textarea>
+
+                    <label for="data">Data:</label>
+                    <input type="date" id="dataEvento" name="data" required>
+
+                    <label for="local">Local:</label>
+                    <input type="text" id="localEvento" name="local" required>
+
+                    <button class="botaoConfirmar" type="submit">Criar evento</button>
                 </form>
             </div>
         </section>
@@ -326,7 +447,7 @@
     <script src="js/javascript.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        //INSTITUIÇÃO
+        //CADASTRO INSTITUIÇÃO
         $(document).ready(function() {
         $('#form-instituicao').submit(function(e) {
             e.preventDefault();
@@ -352,7 +473,7 @@
             });
         });
         
-        //PROFESSOR
+        //CADASTRO PROFESSOR
         $(document).ready(function() {
         $('#form-professor').submit(function(e) {
             e.preventDefault();
@@ -382,7 +503,7 @@
             });
         });
 
-        //ALUNO
+        //CADASTRO ALUNO
         $(document).ready(function() {
         $('#form-aluno').submit(function(e) {
             e.preventDefault();
@@ -412,7 +533,7 @@
             });
         });
 
-        //PESSOA
+        //CADASTRO PESSOA
         $(document).ready(function() {
         $('#form-pessoa').submit(function(e) {
             e.preventDefault();
@@ -440,7 +561,7 @@
             });
         });
 
-        //EDITORA
+        //CADASTRO EDITORA
         $(document).ready(function() {
         $('#form-editora').submit(function(e) {
             e.preventDefault();
@@ -466,7 +587,7 @@
             });
         });
 
-        //AUTOR
+        //CADASTRO AUTOR
         $(document).ready(function() {
         $('#form-autor').submit(function(e) {
             e.preventDefault();
@@ -490,7 +611,7 @@
             });
         });
 
-        //LIVRO
+        //CADASTRO LIVRO
         $(document).ready(function() {
         $('#form-livro').submit(function(e) {
             e.preventDefault();
@@ -511,6 +632,107 @@
                     document.getElementById('autorLivro').value = '';
                     document.getElementById('editoraLivro').value = '';
                     document.getElementById('isbnLivro').value = '';
+                    },
+                    error: function(xhr, status, error) {
+                    console.log(error);
+                    }
+                });
+            });
+        });
+
+        //EMPRÉSTIMO PROFESSOR
+        $(document).ready(function() {
+        $('#form-emprestimo-professor').submit(function(e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/forms/formEmpProfessor.php',
+                    data: formData,
+                    success: function(response) {
+                    console.log(response);
+                
+                    document.getElementById('professoresEmprestimoProfessor').value = '';
+                    document.getElementById('livrosEmprestimoProfessor').value = '';
+                    document.getElementById('quantidadeDiasProfessor').value = '';
+                    },
+                    error: function(xhr, status, error) {
+                    console.log(error);
+                    }
+                });
+            });
+        });
+
+        //EMPRÉSTIMO ALUNO
+        $(document).ready(function() {
+        $('#form-emprestimo-aluno').submit(function(e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/forms/formEmpAluno.php',
+                    data: formData,
+                    success: function(response) {
+                    console.log(response);
+                
+                    document.getElementById('alunosEmprestimoAluno').value = '';
+                    document.getElementById('livrosEmprestimoAluno').value = '';
+                    document.getElementById('quantidadeDiasAluno').value = '';
+                    },
+                    error: function(xhr, status, error) {
+                    console.log(error);
+                    }
+                });
+            });
+        });
+
+        //EMPRÉSTIMO PESSOA
+        $(document).ready(function() {
+        $('#form-emprestimo-pessoa').submit(function(e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/forms/formEmpPessoa.php',
+                    data: formData,
+                    success: function(response) {
+                    console.log(response);
+                
+                    document.getElementById('pessoasEmprestimoPessoa').value = '';
+                    document.getElementById('livrosEmprestimoPessoa').value = '';
+                    document.getElementById('quantidadeDiasPessoa').value = '';
+                    },
+                    error: function(xhr, status, error) {
+                    console.log(error);
+                    }
+                });
+            });
+        });
+
+        //CRIAR EVENTO
+        $(document).ready(function() {
+        $('#form-criar-evento').submit(function(e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/forms/formCriarEvento.php',
+                    data: formData,
+                    success: function(response) {
+                    console.log(response);
+                
+                    document.getElementById('tituloEvento').value = '';
+                    document.getElementById('descricaoEvento').value = '';
+                    document.getElementById('dataEvento').value = '';
+                    document.getElementById('localEvento').value = '';
                     },
                     error: function(xhr, status, error) {
                     console.log(error);

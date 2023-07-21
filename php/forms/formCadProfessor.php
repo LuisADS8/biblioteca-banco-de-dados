@@ -16,7 +16,7 @@
             echo "As senhas não coincidem.";
         } else {
             $sql = "INSERT INTO usuario (nome, matricula, email, id_instituicao, cpf, telefone, tipo_usuario, senha) 
-                    VALUES ('$nome', '$matricula', '$email', '$instituicaoId', '$cpf', '$telefone', 'Professor', '$senha')";
+            VALUES ('$nome', '$matricula', '$email', '$instituicaoId', '$cpf', '$telefone', 'Professor', '$senha')";
 
             $conn->query($sql);
         }
