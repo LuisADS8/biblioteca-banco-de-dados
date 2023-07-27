@@ -3,14 +3,19 @@
     include 'php/consultas/consultar_livros.php';
     include 'php/consultas/consultar_eventos.php';
 
-    //Consultando dados para tabela de empréstimos
-    $sqlEmprestimo = "SELECT usuario.nome AS nome_usuario, livro.titulo AS titulo_livro, emprestimo.data_devolucao FROM emprestimo INNER JOIN usuario ON emprestimo.id_usuario = usuario.id_usuario INNER JOIN livro ON emprestimo.id_livro = livro.id_livro WHERE usuario.id_usuario = 3;";
-    $resultEmprestimo = $conn->query($sqlEmprestimo);
+    if (isset($_GET['id_usuario'])) {
+        $userId = ($_GET['id_usuario']);
 
-    //Consultando dados para tabela de reservas
-    $sqlReserva = "SELECT usuario.nome AS nome_usuario, livro.titulo AS titulo_livro, reserva.data_reserva FROM reserva INNER JOIN usuario ON reserva.id_usuario = usuario.id_usuario INNER JOIN livro ON reserva.id_livro = livro.id_livro WHERE usuario.id_usuario = 3;";
-    $resultReserva = $conn->query($sqlReserva);
+        //Consultando dados para tabela de empréstimos
+        $sqlEmprestimo = "SELECT usuario.nome AS nome_usuario, livro.titulo AS titulo_livro, emprestimo.data_devolucao FROM emprestimo INNER JOIN usuario ON emprestimo.id_usuario = usuario.id_usuario INNER JOIN livro ON emprestimo.id_livro = livro.id_livro WHERE usuario.id_usuario = $userId;";
+        $resultEmprestimo = $conn->query($sqlEmprestimo);
+        
+        //Consultando dados para tabela de reservas
+        $sqlReserva = "SELECT usuario.nome AS nome_usuario, livro.titulo AS titulo_livro, reserva.data_reserva FROM reserva INNER JOIN usuario ON reserva.id_usuario = usuario.id_usuario INNER JOIN livro ON reserva.id_livro = livro.id_livro WHERE usuario.id_usuario = $userId;";
+        $resultReserva = $conn->query($sqlReserva);
 
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -74,6 +79,7 @@
                     <?php } ?>
                 </table>
             </div>
+
             <!-- TELA DE RESERVAS -->
             <div id="telaReservas" class="tela telaPersonalizacao">
                 <table>
@@ -103,6 +109,7 @@
                     <?php } ?>
                 </table>
             </div>
+
             <!-- TELA DE LIVROS DISPONÍVEIS -->
             <div id="telaLivros" class="tela telaPersonalizacao">
                 <table>
@@ -122,6 +129,7 @@
                     ?>
                 </table>
             </div>
+            
             <!-- TELA DE EVENTOS -->
             <div id="telaEventos" class="tela telaPersonalizacao">
                 <table>

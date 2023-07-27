@@ -24,11 +24,21 @@
             $row = $sqlFuncionario->fetch(PDO::FETCH_ASSOC);
             if ($row['senha'] == $senha) {
                 header("Location: tela_funcionario.php");
+            } else {
+                echo "Senha inválida.";
             }
         } else if ($quantidadeUsuario == 1) {
             $row = $stmtUsuario->fetch(PDO::FETCH_ASSOC);
             if ($row['senha'] == $senha) {
-                header("Location: tela_usuario.php");
+                header("Location: tela_usuario.php?id_usuario=" . $row['id_usuario']);
+            } else {
+                echo "Senha inválida.";
+            }
+        } else if ($email == 'admin@gmail.com') {
+            if ($senha == 'admin') {
+                header("Location: tela_administrador.php");
+            } else {
+                echo "Senha inválida.";
             }
         } else {
             echo "Falha ao entrar.";

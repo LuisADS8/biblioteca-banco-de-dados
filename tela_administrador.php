@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/tela_funcionario.css">
     <link rel="stylesheet" href="styles/tela_usuario.css">
-    <title>Funcionário</title>
+    <title>Administrador</title>
 </head>
 <body>
     <header>
@@ -68,6 +68,9 @@
 
             <!-- BOTÃO PARA TELA DE USUÁRIOS -->
             <button class="botao" onclick="ativarBotao(this), exibirTela('telaUsuarios')">Usuários</button>
+
+            <!-- BOTÃO PARA TELA DE CADASTRAR FUNCIONÁRIO -->
+            <button class="botao" onclick="ativarBotao(this), exibirTela('telaCadastroFuncionario')">Cadastrar Funcionário</button>
         </section>
 
         <section class="telaRequerida">
@@ -431,6 +434,28 @@
                     ?>
                 </table>
             </div>
+
+            <!-- TELA DE CADASTRAR FUNCIONÁRIO -->
+            <div id="telaCadastroFuncionario" class="tela telaPersonalizacao">
+                <form id="form-funcionario" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nomeFuncionario" name="nome" required>
+                    
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="emailFuncionario" name="email" required>
+
+                    <label for="cargo">Cargo:</label>
+                    <input type="text" id="cargoFuncionario" name="cargo" required>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senhaFuncionario" name="senha" required>
+                    
+                    <label for="confirmar_senha">Confirmar Senha:</label>
+                    <input type="password" id="confirmar_senhaFuncionario" name="confirmar_senha" required>
+                    
+                    <button class="botaoConfirmar" type="submit">Cadastrar</button>
+                </form>
+            </div>
         </section>
     </main>
     <script src="js/javascript.js"></script>
@@ -723,6 +748,33 @@
                     document.getElementById('descricaoEvento').value = '';
                     document.getElementById('dataEvento').value = '';
                     document.getElementById('localEvento').value = '';
+                    },
+                    error: function(xhr, status, error) {
+                    console.log(error);
+                    }
+                });
+            });
+        });
+
+        //CADASTRO INSTITUIÇÃO
+        $(document).ready(function() {
+        $('#form-funcionario').submit(function(e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/forms/formCadFuncionario.php',
+                    data: formData,
+                    success: function(response) {
+                    console.log(response);
+                
+                    document.getElementById('nomeFuncionario').value = '';
+                    document.getElementById('emailFuncionario').value = '';
+                    document.getElementById('cargoFuncionario').value = '';
+                    document.getElementById('senhaFuncionario').value = '';
+                    document.getElementById('confirmar_senhaFuncionario').value = '';
                     },
                     error: function(xhr, status, error) {
                     console.log(error);
